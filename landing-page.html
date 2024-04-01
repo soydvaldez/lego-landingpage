@@ -25,6 +25,9 @@
         .page {
             width: 100%;
             height: 100vh;
+
+            position: absolute;
+            z-index: 0;
         }
 
         .container {
@@ -41,7 +44,7 @@
 
         .navbar {
             grid-area: nav;
-            animation: 2s navbar .2s ease-in-out forwards;
+            animation: 4s navbar .2s ease-in-out forwards;
         }
 
         @keyframes navbar {
@@ -87,7 +90,7 @@
             grid-area: section;
             margin: 0 0 0 80px;
 
-            animation: 2s main-section .2s ease-in-out forwards;
+            animation: 4s main-section .2s ease-in-out forwards;
         }
 
         @keyframes main-section {
@@ -128,7 +131,7 @@
             grid-template-columns: repeat(6, 1fr);
             align-items: center;
 
-            animation: 2s side-section .2s ease-in-out forwards;
+            animation: 4s side-section .2s ease-in-out forwards;
         }
 
         @keyframes side-section {
@@ -208,7 +211,7 @@
             display: flex;
             align-items: flex-end;
 
-            animation: 2s footer .2s ease-out forwards;
+            animation: 4s footer .2s ease-out forwards;
         }
 
         @keyframes footer {
@@ -249,6 +252,78 @@
             transform: scale(1.2);
             transition: 1s;
             cursor: pointer;
+        }
+
+        .loader {
+            width: 100%;
+            height: 100%;
+            background: #fff;
+
+            position: absolute;
+            z-index: 3;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            opacity: 1;
+            transition: ease-in-out;
+
+            animation: loader 2s linear forwards;
+        }
+
+        @keyframes loader {
+            0% {
+                visibility: visible;
+                opacity: 1;
+            }
+
+            50% {
+                visibility: visible;
+                opacity: 1;
+            }
+
+            100% {
+                visibility: hidden;
+                opacity: 1;
+            }
+        }
+
+        .loader div {
+            width: 50px;
+            height: 50px;
+            background: var(--yellow);
+
+            margin: 30px;
+            border-radius: 50%;
+            animation: loader-div 2s linear infinite;
+        }
+
+        .loader div:nth-child(1) {
+            animation-delay: .2s;
+        }
+
+        .loader div:nth-child(2) {
+            animation-delay: .4s;
+        }
+
+        .loader div:nth-child(3) {
+            animation-delay: .6s;
+        }
+
+        @keyframes loader-div {
+            0%,
+            100% {
+                transform: scale(.2);
+            }
+
+            40% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1);
+            }
         }
     </style>
 </head>
@@ -296,7 +371,11 @@
         </section>
     </section>
     <!-- Loader -->
-    <div class="loader"></div>
+    <div class="loader">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
     <!-- Modal -->
     <div class="modal"></div>
 </body>
